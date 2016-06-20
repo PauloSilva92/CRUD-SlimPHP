@@ -9,10 +9,12 @@
 
             const save = (user)=> $http.post(URL+'/user',user);
             const listAll = ()=> $http.get(URL+'/users');
+            const remove = (id)=> $http.delete(URL+'/user/'+id);
 
             return {
                 save,
-                listAll
+                listAll,
+                remove
             }
         }
 

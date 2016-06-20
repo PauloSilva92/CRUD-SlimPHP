@@ -15,8 +15,8 @@
             if( $smtp->rowCount() == '1'){
               return array('message' => 'Salvo com sucesso' );
             } else {
-                return array('erro'=> 'Algo de errado aconteceu');
-            }
+                return array('error'=> 'Algo de errado aconteceu');
+            };
         }
 
         public function listarTodos(){
@@ -26,6 +26,20 @@
 
               $result = $smtp->fetchAll();
               return $result;
+        }
+
+        public function remove($id){
+            $db = Database::conexao();
+            $smtp = $db->prepare("DELETE FROM user WHERE id=:id");
+            $smtp->execute(array(
+                ':id'=>$id
+            ));
+
+            if( $smtp->rowCount() == '1'){
+              return array('message' => 'Excluído com sucesso');
+            } else {
+                return array('error'=> 'Algo de errado aconteceu');
+            };
         }
 
     }

@@ -46,11 +46,22 @@
         return $newResponse;
     });
 
+    //retorna uma lista de todos os usuários cadastrados
     $app->get('/users', function (Request $request, Response $response){
         $userClass = new User();
         $todos = $userClass->listarTodos();
         $newResponse = $response->withJson($todos);
         return $newResponse;
+    });
+
+    $app->delete('/user/{id}',function(Request $request, Response $response){
+        $id = $request->getAttribute('id');
+        $userClass = new User();
+        $result = $userClass->remove($id);
+
+        $newResponse = $response->withJson($result);
+        return $newResponse;
+
     });
 
     $app->run()

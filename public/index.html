@@ -17,6 +17,15 @@
                 font-size: 30px;
                 background-color: #ff8080;
                 border-radius: 8px;
+                cursor: pointer;
+            }
+
+            .success{
+                padding: 10px;
+                font-size: 30px;
+                background-color: #b3ffb3;
+                border-radius: 8px;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -50,8 +59,12 @@
                 </form>
             </div>
 
-            <div class="row error" data-ng-if="userC.error">
+            <div class="row error" data-ng-if="userC.error" ng-click="userC.error=null">
                 {{userC.error.message}}
+            </div>
+
+            <div class="row success" data-ng-if="userC.success" ng-click="userC.success=null">
+                {{userC.success}}
             </div>
 
             <div class="row">
@@ -67,6 +80,9 @@
                             <th>
                                 Email
                             </th>
+                            <th>
+
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,6 +95,9 @@
                             </td>
                             <td>
                                 {{user.email}}
+                            </td>
+                            <td>
+                                <a  data-ng-click="userC.remove(user.id)" class="btn-floating waves-effect waves-light red"><i class="material-icons">remove</i></a>
                             </td>
                         </tr>
                     </tbody>
