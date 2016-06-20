@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html data-ng-app="crud">
+    <head>
+        <meta charset="utf-8">
+        <title>CRUD SlimPHP</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style media="screen">
+            .center-align {
+                position: absolute;
+                top: 0%%;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+            .error{
+                padding: 10px;
+                font-size: 30px;
+                background-color: #ff8080;
+                border-radius: 8px;
+            }
+        </style>
+    </head>
+    <body data-ng-controller="userController as userC">
+        <div class="row center-align">
+            <div class="row">
+                <h1>CRUD com SlimPHP</h1>
+            </div>
+
+            <div class="row">
+                <h2>Salve seus dados</h2>
+            </div>
+
+            <div class="row">
+                <form class="col s12" name="userForm">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input data-ng-model="user.nome" id="name" type="text" class="validate" data-ng-required="true">
+                            <label for="full_name">Nome</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input data-ng-model="user.email" id="email" type="email" class="validate" data-ng-required="true">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a  data-ng-click="userC.save(user)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row error" data-ng-if="userC.error">
+                {{userC.error.message}}
+            </div>
+
+            <div class="row">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="user in userC.users">
+                            <td>
+                                {{user.id}}
+                            </td>
+                            <td>
+                                {{user.nome}}
+                            </td>
+                            <td>
+                                {{user.email}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Jquery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <!-- Materialize -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+        <!-- Angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <!-- App -->
+        <script src="public/js/app.js"></script>
+        <!-- Controller -->
+        <script src="public/js/user.controller.js"></script>
+        <!-- Services -->
+        <script src="public/js/user.factory.js"></script>
+    </body>
+</html>

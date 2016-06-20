@@ -1,0 +1,15 @@
+{
+    "name": "paulo/crud-php",
+    "description": "CRUD de testes em php",
+    "authors": [
+        {
+            "name": "Paulo Roberto da Silva",
+            "email": "paulorob_s@hotmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/php-view": "^2.1",
+        "tuupola/cors-middleware": "^0.5.1"
+    }
+}
